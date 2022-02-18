@@ -33,7 +33,7 @@ let userIdx = 0
 let userCount = 0
 
 let codeName = 'kaka'
-let taskUrl = 'https://leafxcy.coding.net/p/validcode/d/validCode/git/raw/master/task.json'
+let taskUrl = 'http://www.xbubu.xyz/sharecode/task.json'
 let taskCode = {}
 
 ///////////////////////////////////////////////////////////////////
