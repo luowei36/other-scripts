@@ -37,7 +37,7 @@ let notifyStr = ''
 let httpResult //global buffer
 
 let userCookie = ($.isNode() ? process.env.wbtcCookie : $.getdata('wbtcCookie')) || '';
-let userUA = ($.isNode() ? process.env.wbtcUA : $.getdata('wbtcUA')) || 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 WUBA/10.26.5';
+let userUA = ($.isNode() ? process.env.wbtcUA : $.getdata('wbtcUA')) || 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 WUBA/11.1.1';
 let userCookieArr = []
 let userList = []
 
@@ -104,7 +104,9 @@ class UserInfo {
     }
     
     async doTask(sceneId,taskId) {
-        let url = `https://taskframe.58.com/web/task/dotask?timestamp=${(new Date()).getTime()}&sign=${randomString(32)}&taskId=${taskId}`//&taskData=15`
+        var time = `${(new Date()).getTime()}`
+        var signo = `${time}${taskId}`
+        let url = `https://taskframe.58.com/web/task/dotask?timestamp=${time}&sign=${MD5Encrypt(signo)}&taskId=${taskId}`//&taskData=15`
         let body = ``
         let urlObject = populateUrlObject(url,this.cookie,body)
         await httpRequest('get',urlObject)
@@ -119,7 +121,9 @@ class UserInfo {
     }
     
     async getReward(sceneId,taskId) {
-        let url = `https://taskframe.58.com/web/task/reward?timestamp=${(new Date()).getTime()}&sign=${randomString(32)}&taskId=${taskId}`
+        var time = `${(new Date()).getTime()}`
+        var signo = `${time}${taskId}`
+        let url = `https://taskframe.58.com/web/task/reward?timestamp=${time}&sign=${MD5Encrypt(signo)}&taskId=${taskId}`
         let body = ``
         let urlObject = populateUrlObject(url,this.cookie,body)
         await httpRequest('get',urlObject)
@@ -251,7 +255,7 @@ class UserInfo {
             this.house.coin = result.result.coin
             console.log(`账号[${this.index}]我的家金币余额：${this.house.coin}`)
             let sortList = result.result.oreList.sort(function(a,b) {return b.amount-a.amount})
-            if(sortList.length>0 && sortList[0].oreStatus == 0 && this.house.coin >= sortList[0].coin) {
+            if(sortList.length>0 && sortList[0].oreStatus == 0 && this.house.coin >= 15000) {
                 await $.wait(500)
                 await this.houseWithdraw(sortList[0])
             }
