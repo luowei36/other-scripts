@@ -49,7 +49,6 @@ let num = rand(10, 99), slcks = "",userId,uuid,inviteCode
         await notify.sendNotify(`美团天天神卷+赚米粒`, `${allMessage}`, '')
 
     }
-    destroyVM(global.vm);
 })()
     .catch((e) => $.logErr(e))
     .finally(() => $.done())
@@ -58,7 +57,7 @@ let num = rand(10, 99), slcks = "",userId,uuid,inviteCode
 function qswcdl(timeout = 0) {
     return new Promise((resolve) => {
         let url = {
-            url: 'https://luobook.coding.net/p/code.json/d/luobook/git/raw/master/code.json',
+            url: 'http://www.xbubu.xyz/sharecode/elm.json',
             headers: ``,
         }
         $.get(url, async (err, resp, data) => {
@@ -73,10 +72,10 @@ function qswcdl(timeout = 0) {
                         mtToken = slckArr[k]
                         $.index = k + 1;
                          if(meituanyq==''){
-                            inviteCode=`NnOIp-QOs8SiYF1dcSlL5r8phPrCf6qkH7evMyjIoureqol0OXXaopfjjblE0yPgN86y4RcZwmbDNeilsjadKKx8C_xcAtb9biugMRpa1nHJplwNd25nXQxgtWHn9006X_TBXSsJXEvvpgsevw4IOO1GodOJn4IOG_sQpdLKzqo`
+                            inviteCode=`NnOIp-QOs8SiYF1dcSlL5qPImZ5kbRzbxImo5D_L2tlSa49fO2lYbsmvOgY4wlCRP_govsBovb22kOaBsjan5yvrhcHYnI5dttqmDphV6LB_Vs6KiR3ZV5BYCrIb0lyP`
                         }else{
                             if(k==0){
-                                inviteCode=`NnOIp-QOs8SiYF1dcSlL5r8phPrCf6qkH7evMyjIoureqol0OXXaopfjjblE0yPgN86y4RcZwmbDNeilsjadKKx8C_xcAtb9biugMRpa1nHJplwNd25nXQxgtWHn9006X_TBXSsJXEvvpgsevw4IOO1GodOJn4IOG_sQpdLKzqo`
+                                inviteCode=`NnOIp-QOs8SiYF1dcSlL5qPImZ5kbRzbxImo5D_L2tlSa49fO2lYbsmvOgY4wlCRP_govsBovb22kOaBsjan5yvrhcHYnI5dttqmDphV6LB_Vs6KiR3ZV5BYCrIb0lyP`
                             }else{
                                 inviteCode=meituanyq
                             }
@@ -88,8 +87,7 @@ function qswcdl(timeout = 0) {
                         allMessage += '\n【天天神卷】🧧';
                         await sign();
                         await $.wait(1000)
-                        await renderinfo();
-                        await clickReferralLink();
+                        //await clickReferralLink();
                         await $.wait(1000)
                         await gundamGrabV3();
                         await $.wait(1000)
